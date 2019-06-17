@@ -56,3 +56,9 @@ variable "custom_prefix" {
   type        = "string"
   default     = "tf_"
 }
+
+variable "period" {
+  description = "The length of time in-which each metric aggregation should occur."
+  type        = "string"
+  default     = "120"
+}
