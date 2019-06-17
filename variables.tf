@@ -50,3 +50,9 @@ variable "swap_usage_threshold" {
 
   # 256 Megabyte in Byte
 }
+
+variable "custom_name_prefix" {
+  description = "An optional string to prefix resources with"
+  type        = "string"
+  default     = "tf_"
+}
