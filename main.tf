@@ -13,7 +13,7 @@ resource "aws_sns_topic" "default" {
 }
 
 resource "aws_db_event_subscription" "default" {
-  name_prefix = "rds-event-sub"
+  name_prefix = "${replace(var.custom_prefix, "_", "-")}-rds-event-sub"
   sns_topic   = "${aws_sns_topic.default.arn}"
 
   source_type = "db-instance"
