@@ -16,7 +16,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_utilization_too_high" {
   period              = "${var.period}"
   statistic           = "Average"
   threshold           = "${local.thresholds["CPUUtilizationThreshold"]}"
-  alarm_description   = "Average database CPU utilization over last ${var.period / 2} minutes too high."
+  alarm_description   = "Average database CPU utilization over last ${var.period / 60} minutes too high."
   alarm_actions       = ["${aws_sns_topic.default.arn}"]
   ok_actions          = ["${aws_sns_topic.default.arn}"]
 
@@ -34,7 +34,7 @@ resource "aws_cloudwatch_metric_alarm" "disk_queue_depth_too_high" {
   period              = "${var.period}"
   statistic           = "Average"
   threshold           = "${local.thresholds["DiskQueueDepthThreshold"]}"
-  alarm_description   = "Average database disk queue depth over last ${var.period / 2} minutes too high, performance may suffer."
+  alarm_description   = "Average database disk queue depth over last ${var.period / 60} minutes too high, performance may suffer."
   alarm_actions       = ["${aws_sns_topic.default.arn}"]
   ok_actions          = ["${aws_sns_topic.default.arn}"]
 
@@ -52,7 +52,7 @@ resource "aws_cloudwatch_metric_alarm" "freeable_memory_too_low" {
   period              = "${var.period}"
   statistic           = "Average"
   threshold           = "${local.thresholds["FreeableMemoryThreshold"]}"
-  alarm_description   = "Average database freeable memory over last ${var.period / 2} minutes too low, performance may suffer."
+  alarm_description   = "Average database freeable memory over last ${var.period / 60} minutes too low, performance may suffer."
   alarm_actions       = ["${aws_sns_topic.default.arn}"]
   ok_actions          = ["${aws_sns_topic.default.arn}"]
 
@@ -70,7 +70,7 @@ resource "aws_cloudwatch_metric_alarm" "swap_usage_too_high" {
   period              = "${var.period}"
   statistic           = "Average"
   threshold           = "${local.thresholds["SwapUsageThreshold"]}"
-  alarm_description   = "Average database swap usage over last ${var.period / 2} minutes too high, performance may suffer."
+  alarm_description   = "Average database swap usage over last ${var.period / 60} minutes too high, performance may suffer."
   alarm_actions       = ["${aws_sns_topic.default.arn}"]
   ok_actions          = ["${aws_sns_topic.default.arn}"]
 
